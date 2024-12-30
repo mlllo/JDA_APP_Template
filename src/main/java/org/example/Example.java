@@ -13,8 +13,10 @@ import java.util.EnumSet;
 public class Example {
 
     public Example() throws LoginException {
-        DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(TOKEN.TOKEN);
-        builder.setActivity(Activity.customStatus(""));
+        Dotenv dotenv = Dotenv.load();
+        String token = dotenv.get("TOKEN");
+        DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(token);
+        builder.setActivity(Activity.customStatus("JDA_APP_TEMPLATE"));
         builder.enableIntents(EnumSet.allOf(GatewayIntent.class));
         ShardManager shardManager = builder.build();
         shardManager.addEventListener(
