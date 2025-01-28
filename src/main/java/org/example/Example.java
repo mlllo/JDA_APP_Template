@@ -31,5 +31,6 @@ public class Example {
         }catch (Exception e) {
             System.out.println("Invalid token!");
         }
+
     }
 }
