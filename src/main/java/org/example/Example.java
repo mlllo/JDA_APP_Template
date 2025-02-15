@@ -15,9 +15,8 @@ public class Example {
     public Example() throws LoginException {
         Dotenv dotenv = Dotenv.load();
         String token = dotenv.get("TOKEN");
-        DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(token);
+        DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.create(token, EnumSet.allOf(GatewayIntent.class));
         builder.setActivity(Activity.customStatus("JDA_APP_TEMPLATE"));
-        builder.enableIntents(EnumSet.allOf(GatewayIntent.class));
         ShardManager shardManager = builder.build();
         shardManager.addEventListener(
                 new _CommandsManager(),
